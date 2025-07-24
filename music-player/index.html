@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with theme toggle -->
+        <header class="header">
+            <h1><i class="fas fa-music"></i> Music Player</h1>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <!-- Music Upload Section -->
+        <section class="upload-section">
+            <div class="upload-area" id="uploadArea">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Drag & Drop music files here or click to browse</p>
+                <input type="file" id="fileInput" accept="audio/*" multiple hidden>
+                <button class="upload-btn" id="uploadBtn">Choose Files</button>
+            </div>
+        </section>
+
+        <!-- Search and Filter Section -->
+        <section class="controls-section">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search by title, artist, or genre...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="filter-container">
+                <select id="genreFilter">
+                    <option value="">All Genres</option>
+                </select>
+                <select id="artistFilter">
+                    <option value="">All Artists</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Current Track Display -->
+        <section class="current-track">
+            <div class="track-info">
+                <div class="track-artwork">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="track-details">
+                    <h3 id="currentTitle">No track selected</h3>
+                    <p id="currentArtist">Unknown Artist</p>
+                    <p id="currentGenre">Unknown Genre</p>
+                </div>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <span id="currentTime">0:00</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                    <input type="range" id="progressSlider" min="0" max="100" value="0">
+                </div>
+                <span id="totalTime">0:00</span>
+            </div>
+
+            <!-- Player Controls -->
+            <div class="player-controls">
+                <button id="shuffleBtn" class="control-btn">
+                    <i class="fas fa-random"></i>
+                </button>
+                <button id="prevBtn" class="control-btn">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button id="playPauseBtn" class="control-btn play-pause">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button id="nextBtn" class="control-btn">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+                <button id="repeatBtn" class="control-btn">
+                    <i class="fas fa-redo"></i>
+                </button>
+            </div>
+
+            <!-- Volume Control -->
+            <div class="volume-control">
+                <i class="fas fa-volume-up"></i>
+                <input type="range" id="volumeSlider" min="0" max="100" value="50">
+            </div>
+        </section>
+
+        <!-- Playlist Section -->
+        <section class="playlist-section">
+            <div class="playlist-header">
+                <h2>Playlist</h2>
+                <div class="playlist-actions">
+                    <button id="clearPlaylistBtn" class="action-btn">
+                        <i class="fas fa-trash"></i> Clear All
+                    </button>
+                    <button id="savePlaylistBtn" class="action-btn">
+                        <i class="fas fa-save"></i> Save Playlist
+                    </button>
+                    <button id="loadPlaylistBtn" class="action-btn">
+                        <i class="fas fa-folder-open"></i> Load Playlist
+                    </button>
+                </div>
+            </div>
+            
+            <div class="playlist-container">
+                <ul id="playlist" class="playlist">
+                    <!-- Playlist items will be added dynamically -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- Audio Element -->
+        <audio id="audioPlayer" preload="metadata"></audio>
+    </div>
+
+    <script src="js/musicPlayer.js"></script>
+</body>
+</html>
